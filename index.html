@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<video width="256" height="192" id="myVideo" controls autoplay>
+			<source src="video/video1.mp4" id="mp4Source" type="video/mp4" />
+			Your browser does not support the video tag.
+		</video>
+
+		<script type="text/javascript">
+			var count = 1
+			var player = document.getElementById("myVideo")
+			var mp4Vid = document.getElementById("mp4Source")
+			player.addEventListener("ended", myHandler, false)
+
+			function myHandler(e) {
+				if (!e) {
+					e = window.event
+				}
+				count++
+				if (count <= 3) {
+					mp4Vid.setAttribute("src", "video/video" + count + ".mp4")
+					player.load()
+					console.log("loading video" + count)
+					player.play()
+				}
+			}
+		</script>
+	</body>
+</html>
